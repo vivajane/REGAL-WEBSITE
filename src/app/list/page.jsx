@@ -9,6 +9,7 @@ const ListPage = () => {
      <div className=' md:flex w-full justify-between bg-neutral-400'>
       <div className='sm:w-full flex flex-col lg:w-2/3'>
         <h1 className='sm:text-2xl lg:text-6xl md:text-4xl  leading-tight font-bold pt-12 xl:text-center md:text-left px-6 text-center md:mt-20 '>Get upto 50% off <br /> on <br /> your first order</h1>
+        
         <div className='text-center mt-10 pb-10 lg:pb-0'>
         <button className='bg-pink-400 text-white text-center items-center py-3 rounded-lg px-12 '>Buy Now</button>
         </div>
