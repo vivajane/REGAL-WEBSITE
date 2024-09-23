@@ -10,8 +10,8 @@ const SortBy = () => {
                 <option value="offline">Offline</option>
             </select>
 
-            <input type="text" placeholder='   min price' name="" id="" className='border-[1px] border-black py-2 rounded-lg my-6 mr-3' />
-            <input className='border-[1px] mr-3 border-black  py-2 rounded-lg my-6' type="text" name="" placeholder='   max price' id="" />
+            <input type="number" placeholder='   min price' name="" id="" className='border-[1px] border-black py-2 rounded-lg my-6 mr-3' />
+            <input className='border-[1px] mr-3 border-black  py-2 rounded-lg my-6' type="number" name="" placeholder='   max price' id="" />
 
             <select className='bg-slate-300 px-4 py-2 rounded-lg my-6 mr-3' name="size" id="size">
                 <option>Size</option>

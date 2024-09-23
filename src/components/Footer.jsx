@@ -7,7 +7,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     
-      <div className="bg-footer py-14 md:flex justify-between text-black px-6 lg:px-24 xl:px-32">
+      <div className="bg-footer py-14 md:flex justify-between bg-gray-300 text-black px-6 lg:px-24 xl:px-32">
         <div>
           <h1 className="font-bold text-2xl">Regal Fashion</h1>
           <p className="font-poppins font-[300px] xl:text-xl sm:text-base lg:text-lg py-6">
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
 
         <form
-          className="bg-white px-4 rounded-[10px] text-lg"
+          className=" px-4 py-14 rounded-[10px] text-lg bg-zinc-600"
           action=""
         >
           <h1 className="font-poppins font-[600px] xl:text-xl sm:text-sm lg:text-lg ">
@@ -56,12 +56,12 @@ const Footer = () => {
               type="email"
               name="email"
               id="email"
-              placeholder="  Enter your email address"
-              className="bg-gray-300 rounded w-[100%] py-2"
+              placeholder="Enter your email address"
+              className="text-black  bg-white font-poppins font-[600px] lg:text-xl px-2 rounded-md py-2"
             />
           </div>
-          <div className="md:pb-1 pb-3">
-            <button className="text-white  bg-download font-poppins font-[600px] text-base w-[100%] py-2 rounded">
+          <div className="md:pt-1 pt-4">
+            <button className="text-black  bg-white font-poppins font-[600px] lg:text-xl px-4 py-2 rounded">
               Subscribe Now
             </button>
           </div>
