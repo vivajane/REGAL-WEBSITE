@@ -45,11 +45,7 @@ const Iconss = () => {
         <FaCartArrowDown onClick={isCartOpen}/>
         <div className='w-max absolute -top-4 -right-4 text-white rounded-full h-4 flex  flex-col justify-center items-center bg-rose-600 py-3 px-2'>2</div>
         {
-            !isCart ? (
-                <div className='absolute top-4 text-red-400 right-0 w-max'>
-                    Cart is empty
-                </div>
-            ): isCart && <CartModal/>
+            isCart && <CartModal/>
         }
         </div>
 

@@ -8,3 +8,8 @@
 .hide-scroll{
     scrollbar-width: none;
 }
+
+.active{
+    color: brown;
+    text-decoration: underline;
+}

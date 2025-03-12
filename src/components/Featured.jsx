@@ -1,62 +1,33 @@
+
+
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchProducts } from "@/app/data/products";
 
-const FeaturedProducts = [
-  {
-    id: 1,
-    name: "White Shirt",
-    price: 50,
-    description: "Affordable Shirt, perfect for cool weather",
-    image: [
-      "https://images.pexels.com/photos/2403586/pexels-photo-2403586.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.pexels.com/photos/2698918/pexels-photo-2698918.jpeg?auto=compress&cs=tinysrgb&w=400",
-    ],
-  },
-  {
-    id: 2,
-    name: "Wrist Watch",
-    price: 400,
-    description: "Luxury watch, perfect for Odogwu's",
-    image: [
-      "https://images.pexels.com/photos/5081914/pexels-photo-5081914.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.pexels.com/photos/2078268/pexels-photo-2078268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    ],
-  },
-  {
-    id: 3,
-    name: "Monostrap",
-    price: 40,
-    description: "Beautiful monostrap, perfect for hot weather",
-    image: [
-      "https://images.pexels.com/photos/1375849/pexels-photo-1375849.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.pexels.com/photos/5181087/pexels-photo-5181087.jpeg?auto=compress&cs=tinysrgb&w=400",
-    ],
-  },
-  {
-    id: 4,
-    name: "Wigs",
-    price: 40,
-    description: "Beautiful monostrap, perfect for hot weather",
-    image: [
-      "https://images.pexels.com/photos/5325912/pexels-photo-5325912.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.pexels.com/photos/3615457/pexels-photo-3615457.jpeg?auto=compress&cs=tinysrgb&w=400"
-    ],
-  },
- 
-];
+
 
 const Featured = () => {
-    
+    const[product, setProduct] = useState([])
+   useEffect(()=>{
+    const getProducts = async () => {
+        const data = await fetchProducts()
+      
+        setProduct(data)
+    }
+    getProducts()
+   },[])
   return (
     <div className="px-6 lg:px-24 xl:px-32 my-9">
-      
-
-      <div className="xl:gap-4 my-6 lg:gap-2 grid xl:grid-cols-4 lg:grid-cols-2 sm:grid-cols-1">
-        {FeaturedProducts.map((item) => (
-          <Products key={item.id} item={item} />
-        ))}
+        
+      <div className="xl:gap-4 my-6 md:gap-2 grid lg:grid-cols-4 md:grid-cols-2 ">
+        {product && product.length > 0 ? ( product.map((item) => (
+          <Products key={item.id} products={item}/>
+        ))):(
+          <p>No products available</p>
+        )}
       </div>
     </div>
   );
@@ -64,7 +35,8 @@ const Featured = () => {
 
 export default Featured;
 
-const Products = ({ item }) => {
+const Products = ({products}) => {
+    const {name, price, description, image, slug} = products
     const [current, setCurrent] = useState(0)
 
     const hoverMouse=()=> {
@@ -75,18 +47,20 @@ const Products = ({ item }) => {
         setCurrent(0)
     }
   return (
-    <Link href="/next" className="pb-6">
-      <div onMouseEnter={hoverMouse} onMouseLeave={hoverOut}>
-      <img src={item.image[current]} fill className="rounded object-cover" alt="products" />
+    <Link href={`/shop/${slug}`} className="pb-6">
+      <div className="relative h-[200px] md:h-[350px] w-full" onMouseEnter={hoverMouse} onMouseLeave={hoverOut}>
+        <Image src={image[current]} fill className="rounded object-cover" alt="products"/>
+      
       </div>
       <div className="flex justify-between my-2 font-bold flex-wrap ">
-        <h1>{item.name}</h1>
-        <p>${item.price}</p>
+        <h1>{name}</h1>
+        <p>${price}</p>
       </div>
-      <p className="line-clamp-1 pb-6 xl:pb-11">{item.description}</p>
+      <p className="line-clamp-1 pb-6 xl:pb-11">{description}</p>
       <button className="border-[1px] border-red-400  text-black py-1 rounded px-3">
         Add to Cart
       </button>
     </Link>
   );
 };
+

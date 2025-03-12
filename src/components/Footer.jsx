@@ -45,13 +45,13 @@ const Footer = () => {
         </div>
 
         <form
-          className=" px-4 py-14 rounded-[10px] text-lg bg-zinc-600"
+          className=" px-4 rounded-[10px] text-lg bg-zinc-600"
           action=""
         >
           <h1 className="font-poppins font-[600px] xl:text-xl sm:text-sm lg:text-lg ">
             Suscribe to our Newsletter
           </h1>
-          <div className="md:pb-1 pb-3 pt-3 ">
+          <div className=" pt-3 ">
             <input
               type="email"
               name="email"

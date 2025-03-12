@@ -19,10 +19,8 @@ const Menu = () => {
   return (
     <div className=" cursor-pointer  ">
       <div onClick={onClick}>{open ? <FaTimes /> : <IoMenu />}</div>
-      <div
-        className={`w-full absolute top-16 gap-6 h-screen text-center flex flex-col pl-10 mt-4 overflow-hidden ${
-          open ? "inset-0" : "hidden"
-        }`}
+      {open && <div 
+        className={`absolute w-full h-[calc(100vh-80px)] left-0 top-20 gap-6 flex flex-col text-center items-center z-10 bg-slate-950 text-white p-10 ${open ? "inset-0": ""}`}
       >
         <Link onClick={closeModal} href="/">
           Home
@@ -45,7 +43,7 @@ const Menu = () => {
         <Link onClick={closeModal} href="/cart">
           Cart(2)
         </Link>
-      </div>
+      </div>}
     </div>
   );
 };

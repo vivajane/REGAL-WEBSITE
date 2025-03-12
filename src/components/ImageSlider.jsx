@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Slider = [
   {
@@ -32,23 +33,23 @@ const Slider = [
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex ] = useState(0);
-//   useEffect(()=> {
-//     const interval = setInterval(()=>{
-//         setCurrentIndex((prev) => (prev === Slider.length - 1 ? 0 : prev + 1))
+  useEffect(()=> {
+    const interval = setInterval(()=>{
+        setCurrentIndex((prev) => (prev === Slider.length - 1 ? 0 : prev + 1))
 
-//     }, 5000)
-//     return() => clearInterval(interval)
+    }, 5000)
+    return() => clearInterval(interval)
 
-//   }, [])
+  }, [])
   return (
     <div className="overflow-hidden h-[calc(100vh-80px)]">
       <div className="w-max h-full flex transition-all duration-1000 ease-in-out" style={{transform: `translateX(-${currentIndex * 100}vw)`}}>
         {Slider.map((item) => (
           <div
-            className={`${item.bg} flex flex-col justify-between w-screen h-full gap-16  xl:flex-row`}
+            className={`${item.bg} flex flex-col justify-between w-screen h-full gap-16  md:flex-row`}
             key={item.id}
           >
-            <div className="h-1/2 xl:w-1/2 xl:h-full">
+            <div className="h-1/2 md:w-1/2  md:h-full">
               <h1 className="text-center pt-24  text-xl lg:pt-44 lg:text-2xl xl:text-3xl">
                 {item.description}
               </h1>
@@ -64,16 +65,12 @@ const ImageSlider = () => {
                 </Link>
               </div>
             </div>
-            <div className="relative h-1/2 md:w-1/2 xl:h-full">
-              <img
-                src={item.img}
-                alt="img"
-                fill
-                sizes="100%"
-                className="object-cover w-full "
-              />
+            <div className="relative h-1/2 md:w-1/2 md:h-full">
+            <Image src={item.img} className="object-cover" fill alt="image"/>
             </div>
           </div>
+
+          
         ))}
       </div>
       <div className="absolute flex m-auto bottom-8 gap-4 left-1/2">

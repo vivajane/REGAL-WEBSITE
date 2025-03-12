@@ -78,7 +78,7 @@ const Categories = () => {
 export default Categories
 
 const Category = ({category, image})=> {
-    return <Link className='flex-shrink-0 w-full ' href='/cat'>
+    return <Link className='flex-shrink-0 w-full ' href='/list?cat=test'>
         <div className='relative w-full h-auto '>
         <Image className='rounded-md object-cover' width={400} height={100} src={image} alt="image"></Image>
         </div>
